@@ -129,8 +129,7 @@
 
   /* ---- About ---- */
   .about{border-top:1px solid var(--line);}
-  .about-grid{display:grid;grid-template-columns:1fr;gap:50px;}
-  @media(min-width:860px){.about-grid{grid-template-columns:1fr 1fr;}}
+  .about-grid{display:grid;grid-template-columns:1fr;gap:50px;max-width:70ch;}
   .about h2{font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:24px;}
   .about p{color:var(--muted);line-height:1.75;font-size:1rem;margin-bottom:16px;}
   .about p strong{color:var(--text);font-weight:600;}
@@ -168,23 +167,38 @@
   .portfolio > p{color:var(--muted);max-width:50ch;margin-bottom:50px;line-height:1.6;}
   .reel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;}
   .reel-card{
-    aspect-ratio:9/13;
     border:1px solid var(--line);
     border-radius:4px;
-    display:flex;flex-direction:column;justify-content:space-between;
-    padding:16px;position:relative;overflow:hidden;
+    display:flex;flex-direction:column;
+    padding:12px;position:relative;overflow:hidden;
     background:linear-gradient(160deg,var(--bg-raised),#0a0a0c);
     transition:border-color .25s, transform .25s;
   }
   .reel-card:hover{border-color:var(--neon);transform:translateY(-4px);}
-  .reel-card .play{
-    width:34px;height:34px;border-radius:50%;border:1px solid var(--line);
-    display:flex;align-items:center;justify-content:center;align-self:flex-end;
-    font-size:11px;color:var(--muted);
+  .reel-video{
+    width:100%;aspect-ratio:9/16;object-fit:cover;
+    border-radius:2px;background:#000;border:none;
+    margin-bottom:12px;
   }
-  .reel-card:hover .play{border-color:var(--neon);color:var(--neon);}
   .reel-label{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);}
   .reel-label b{display:block;color:var(--text);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;margin-top:4px;}
+
+  /* ---- Testimonials ---- */
+  .testimonials{border-top:1px solid var(--line);}
+  .testimonials h2{font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:16px;}
+  .testimonials > p{color:var(--muted);max-width:50ch;margin-bottom:50px;line-height:1.6;}
+  .testimonial-grid{display:grid;grid-template-columns:1fr;gap:24px;}
+  @media(min-width:700px){.testimonial-grid{grid-template-columns:1fr 1fr;}}
+  .testimonial-card{
+    border:1px solid var(--line);border-radius:4px;
+    padding:14px;background:linear-gradient(160deg,var(--bg-raised),#0a0a0c);
+    transition:border-color .25s;
+  }
+  .testimonial-card:hover{border-color:var(--neon);}
+  .testimonial-video{
+    width:100%;aspect-ratio:16/9;object-fit:cover;
+    border-radius:2px;background:#000;border:none;margin-bottom:12px;
+  }
 
   /* ---- Contact ---- */
   .contact{border-top:1px solid var(--line);text-align:left;}
@@ -230,6 +244,7 @@
     <a href="#about">ABOUT</a>
     <a href="#services">SERVICES</a>
     <a href="#work">WORK</a>
+    <a href="#testimonials">TESTIMONIALS</a>
     <a href="#contact">CONTACT</a>
   </div>
 </nav>
@@ -254,7 +269,7 @@
   <div class="about-grid">
     <div>
       <h2>I make content that's built to be watched, not scrolled past.</h2>
-      <p>I'm a marketing professional working across <strong>social strategy, video editing, and copywriting</strong>. My background is in managing brand accounts end-to-end — outreach, scripts, ad copy, and the video itself — then reading the numbers to figure out what actually worked.</p>
+      <p>I'm a marketing professional working across <strong>social strategy, video editing, and copywriting</strong>. My background is in managing brand accounts end-to-end — outreach, scripts, ad copy, and the video itself, from first idea to finished post.</p>
       <p>I've cut long-form content into short-form pieces built for retention, written copy for landing pages and email campaigns, and built a project's content and voice completely from scratch. I care about <strong>the first three seconds</strong> — if a video doesn't earn attention immediately, nothing after it matters.</p>
       <div class="tags">
         <span class="tag">SOCIAL STRATEGY</span>
@@ -263,14 +278,6 @@
         <span class="tag">CAPCUT</span>
         <span class="tag">ADOBE CREATIVE CLOUD</span>
         <span class="tag">CANVA</span>
-      </div>
-    </div>
-    <div>
-      <div class="lang-bars">
-        <div class="lang-row"><span class="lang-name mono">ENGLISH</span><div class="lang-track"><div class="lang-fill" style="width:100%"></div></div></div>
-        <div class="lang-row"><span class="lang-name mono">ITALIAN</span><div class="lang-track"><div class="lang-fill" style="width:100%"></div></div></div>
-        <div class="lang-row"><span class="lang-name mono">FRENCH</span><div class="lang-track"><div class="lang-fill" style="width:55%"></div></div></div>
-        <div class="lang-row"><span class="lang-name mono">RUSSIAN</span><div class="lang-track"><div class="lang-fill" style="width:70%"></div></div></div>
       </div>
     </div>
   </div>
@@ -326,10 +333,38 @@
   <h2>Selected work</h2>
   <p>A mix of client and personal projects — drop your best reels, before/afters, or case studies into each slot below.</p>
   <div class="reel-grid">
-    <div class="reel-card"><div class="play">▶</div><div class="reel-label">CLIENT — SOCIAL AD<b>Add project title</b></div></div>
-    <div class="reel-card"><div class="play">▶</div><div class="reel-label">SHORT-FORM EDIT<b>Add project title</b></div></div>
-    <div class="reel-card"><div class="play">▶</div><div class="reel-label">LANDING PAGE COPY<b>Add project title</b></div></div>
-    <div class="reel-card"><div class="play">▶</div><div class="reel-label">PERSONAL PROJECT<b>Add project title</b></div></div>
+    <div class="reel-card">
+      <iframe class="reel-video" src="https://drive.google.com/file/d/14SiCza5Twe-JY2QZ5gx8UAXMdSkzGgGc/preview" allow="autoplay" allowfullscreen></iframe>
+      <div class="reel-label">CLIENT — SOCIAL AD<b>Add project title</b></div>
+    </div>
+    <div class="reel-card">
+      <iframe class="reel-video" src="https://drive.google.com/file/d/1yxJIKPnKjEVlFC7rFcco32IqVhKywJP5/preview" allow="autoplay" allowfullscreen></iframe>
+      <div class="reel-label">SHORT-FORM EDIT<b>Add project title</b></div>
+    </div>
+    <div class="reel-card">
+      <iframe class="reel-video" src="https://drive.google.com/file/d/1mMP5_2TIcZledKctOHHPoicByG6jJpPm/preview" allow="autoplay" allowfullscreen></iframe>
+      <div class="reel-label">LANDING PAGE COPY<b>Add project title</b></div>
+    </div>
+    <div class="reel-card">
+      <iframe class="reel-video" src="https://drive.google.com/file/d/1o5PVWDeQCG6RUVlukJbU3RGGI_vaUGOK/preview" allow="autoplay" allowfullscreen></iframe>
+      <div class="reel-label">PERSONAL PROJECT<b>Add project title</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="tc mono">00:04:50 — TESTIMONIALS</div>
+  <h2>What clients say</h2>
+  <p>A couple of words from people I've worked with.</p>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <iframe class="testimonial-video" src="https://drive.google.com/file/d/19oifhIGRn9e9PJq2wUqOCLNU49YeIfqn/preview" allow="autoplay" allowfullscreen></iframe>
+      <div class="reel-label">CLIENT TESTIMONIAL<b>Add name / company</b></div>
+    </div>
+    <div class="testimonial-card">
+      <iframe class="testimonial-video" src="https://drive.google.com/file/d/1uZIreqF1l23AE9vup6wqBHoop6hefuaT/preview" allow="autoplay" allowfullscreen></iframe>
+      <div class="reel-label">CLIENT TESTIMONIAL<b>Add name / company</b></div>
+    </div>
   </div>
 </section>
 
